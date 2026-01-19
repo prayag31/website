@@ -1,5 +1,5 @@
-FROM ubuntu
+FROM ubuntu:22.04
 RUN apt update
-RUN apt install apcache2 -y
+RUN apt install apache2 -y
 ADD . /var/www/html/
-ENTRYPOINT apcacheclt -D FOREGROUND
+ENTRYPOINT apacheclt -D FOREGROUND
