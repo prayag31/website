@@ -9,8 +9,6 @@ env:
 
 phases:
   install:
-    runtime-versions:
-      docker: 24
     commands:
       - echo "Logging into Docker Hub"
       - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
