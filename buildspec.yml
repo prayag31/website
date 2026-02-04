@@ -3,7 +3,6 @@ version: 0.2
 env:
   variables:
     DOCKERHUB_REPO: "prayag31/website"
-
   secrets-manager:
     DOCKERHUB_USERNAME: "docker-username"
     DOCKERHUB_PASSWORD: "docker-login"
@@ -18,20 +17,20 @@ phases:
 
   pre_build:
     commands:
-      - echo "Getting short commit id"
+      - echo "Preparing image tag"
       - COMMIT_SHORT=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c1-7)
-      - echo "Commit short: $COMMIT_SHORT"
-      - export IMAGE_TAG=${COMMIT_SHORT}
+      - IMAGE_TAG=$COMMIT_SHORT
+      - echo "IMAGE_TAG=$IMAGE_TAG"
 
   build:
     commands:
-      - echo "Building image ${DOCKERHUB_REPO}:${IMAGE_TAG}"
+      - echo "Building Docker image"
       - docker build -t ${DOCKERHUB_REPO}:${IMAGE_TAG} .
       - docker tag ${DOCKERHUB_REPO}:${IMAGE_TAG} ${DOCKERHUB_REPO}:latest
 
   post_build:
     commands:
-      - echo "Pushing images to Docker Hub"
+      - echo "Pushing Docker images"
       - docker push ${DOCKERHUB_REPO}:${IMAGE_TAG}
       - docker push ${DOCKERHUB_REPO}:latest
       - echo "IMAGE_TAG=${IMAGE_TAG}" > image.env
