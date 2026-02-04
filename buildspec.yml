@@ -4,8 +4,8 @@ env:
   variables:
     DOCKERHUB_REPO: "prayag31/website"
   secrets-manager:
-    DOCKERHUB_USERNAME: "docker_username"
-    DOCKERHUB_PASSWORD: "docker_token"
+    DOCKERHUB_USERNAME: "Dockerhub-login:docker_username"
+    DOCKERHUB_PASSWORD: "Dockerhub-login:docker_token"
 
 phases:
   install:
