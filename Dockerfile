@@ -1,5 +1,3 @@
-FROM ubuntu:22.04
-RUN apt update
-RUN apt install apache2 -y
-ADD . /var/www/html/
-ENTRYPOINT apachectl -D FOREGROUND
+FROM nginx:alpine
+COPY . /usr/share/nginx/html
+EXPOSE 80
