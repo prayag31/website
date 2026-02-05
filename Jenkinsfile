@@ -11,7 +11,7 @@ pipeline {
 
   environment {
     AWS_REGION        = 'ap-south-1'
-    CODEBUILD_PROJECT = 'capstone-website-dockerbuild'
+    CODEBUILD_PROJECT = 'Capstone-project'
     DOCKER_IMAGE      = 'prayag31/website'
 
     // K8s access
