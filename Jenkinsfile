@@ -97,7 +97,7 @@ pipeline {
       steps {
         sh '''
           set -e
-          DAY=$(date +%d)
+          DAY=25
           echo "Day of month: $DAY"
 
           if [ "$DAY" != "25" ] && [ "${FORCE_DEPLOY}" != "true" ]; then
