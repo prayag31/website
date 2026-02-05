@@ -4,7 +4,7 @@ pipeline {
   parameters {
     booleanParam(
       name: 'FORCE_DEPLOY',
-      defaultValue: false,
+      defaultValue: true,
       description: 'Force deployment even if today is not the 25th (for testing only)'
     )
   }
